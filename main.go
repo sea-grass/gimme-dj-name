@@ -33,7 +33,7 @@ func main() {
 		//c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 	router.GET("/xx_gimme_dat_dj_name/*name", func(c *gin.Context) {
-		name = c.DefaultQuery("name", "")
+		name := c.DefaultQuery("name", "")
 		if name == "" {
 			message := "Gotta gimme dat name doe"
 		}
