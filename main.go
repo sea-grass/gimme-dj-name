@@ -21,7 +21,7 @@ func main() {
 	//router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
-		c.String(htt.StatusOK, "hi")
+		c.String(http.StatusOK, "hi")
 		//c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
