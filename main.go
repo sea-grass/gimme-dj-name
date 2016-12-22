@@ -17,6 +17,9 @@ func main() {
 
 	router := gin.Default()
 
+	router.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "hi")
+	})
 	router.GET("/xx_gimme_dat_dj_name/:name", GimmeDJName)
 
 	router.Run(port)
