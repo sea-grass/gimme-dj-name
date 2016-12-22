@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -32,8 +33,12 @@ func main() {
 		c.String(http.StatusOK, "hi")
 		//c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
-	router.GET("/xx_gimme_dat_dj_name/*name", func(c *gin.Context) {
-		name := c.DefaultQuery("name", "")
+	router.GET("/xx_gimme_dat_dj_name/", func(c *gin.Context) {
+		c.String(http.StatusOK, "gotta give me dat name doe")
+	})
+	router.GET("/xx_gimme_dat_dj_name/:name", func(c *gin.Context) {
+		name := c.Param("name")
+		fmt.Println("name is", name)
 		message := ""
 		if name == "" {
 			message = "Gotta gimme dat name doe"
