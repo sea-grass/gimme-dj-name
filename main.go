@@ -34,10 +34,11 @@ func main() {
 	})
 	router.GET("/xx_gimme_dat_dj_name/*name", func(c *gin.Context) {
 		name := c.DefaultQuery("name", "")
+		message := ""
 		if name == "" {
-			message := "Gotta gimme dat name doe"
+			message = "Gotta gimme dat name doe"
 		}
-		message := "xx_**[]//_" + FirstHalf(name) + "xx" + SecondHalf(name) + "_\\[]**_xx"
+		message = "xx_**[]//_" + FirstHalf(name) + "xx" + SecondHalf(name) + "_\\[]**_xx"
 
 		c.String(http.StatusOK, message)
 	})
