@@ -4,13 +4,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
 func FirstHalf(s string) string {
-	r := NewReader(s)
-	len := Len(r)
 	//dos tuff..
 
 	return s
