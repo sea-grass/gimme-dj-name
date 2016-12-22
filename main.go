@@ -1,26 +1,29 @@
 package main
 
 import (
-	"os"
+	"log"
 	"net/http"
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
-
-func GimmeDJName(c *gin.Context) {
-	name := c.Param("name")
-	dj_name := "xx_[]**++_" + name + "_++**[]_xx"
-	c.String(http.StatusOK, dj_name)
-}
 
 func main() {
 	port := os.Getenv("PORT")
 
-	router := gin.Default()
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	router := gin.New()
+	router.Use(gin.Logger())
+//	router.LoadHTMLGlob("templates/*.tmpl.html")
+	//router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "hi")
+		c.String(htt.StatusOK, "hi")
+		//c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
-	router.GET("/xx_gimme_dat_dj_name/:name", GimmeDJName)
 
-	router.Run(port)
+	router.Run(":" + port)
 }
