@@ -11,12 +11,12 @@ import (
 
 func FirstHalf(s string) string {
 	//dos tuff..
-
 	return s
 }
 func SecondHalf(s string) string {
 	return ""
 }
+
 func main() {
 	port := os.Getenv("PORT")
 
@@ -26,25 +26,16 @@ func main() {
 
 	router := gin.New()
 	router.Use(gin.Logger())
-//	router.LoadHTMLGlob("templates/*.tmpl.html")
-	//router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "hi")
-		//c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 	router.GET("/xx_gimme_dat_dj_name/", func(c *gin.Context) {
 		c.String(http.StatusOK, "gotta give me dat name doe")
 	})
 	router.GET("/xx_gimme_dat_dj_name/:name", func(c *gin.Context) {
 		name := c.Param("name")
-		fmt.Println("name is", name)
-		message := ""
-		if name == "" {
-			message = "Gotta gimme dat name doe"
-		}
 		message = "xx_**[]//_" + FirstHalf(name) + "xx" + SecondHalf(name) + "_\\[]**_xx"
-
 		c.String(http.StatusOK, message)
 	})
 
